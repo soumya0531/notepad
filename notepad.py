@@ -122,7 +122,7 @@ class Notepad:
         # exit() 
   
     def __showAbout(self): 
-        showinfo("Notepad","Mrinal Verma") 
+        showinfo("Notepad","Soumya Sinha") 
   
     def __openFile(self): 
           
@@ -194,6 +194,6 @@ class Notepad:
         # Run main application 
         self.__root.mainloop() 
   
-notepad = Notepad(width=600,height=400) 
+notepad = Notepad(width=700,height=500) 
 notepad.run()
   
