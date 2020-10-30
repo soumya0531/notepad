@@ -3,7 +3,7 @@ import os
 from tkinter import *
 from tkinter.messagebox import *
 from tkinter.filedialog import *
-import notepad
+# import notepad
 
 class Notepad: 
   
@@ -78,6 +78,14 @@ class Notepad:
         # To save current file 
         self.__thisFileMenu.add_command(label="Save", 
                                         command=self.__saveFile)     
+        
+        # To give a feature of dark mode 
+        self.__thisFileMenu.add_command(label="Dark Mode", 
+                                        command=self.__darkMode) 
+        
+        # To give a feature of light mode 
+        self.__thisFileMenu.add_command(label="Light Mode", 
+                                        command=self.__lightMode) 
   
         # To create a line in the dialog         
         self.__thisFileMenu.add_separator()                                          
@@ -96,8 +104,8 @@ class Notepad:
           
         # To give a feature of paste 
         self.__thisEditMenu.add_command(label="Paste", 
-                                        command=self.__paste)          
-          
+                                        command=self.__paste)            
+
         # To give a feature of editing 
         self.__thisMenuBar.add_cascade(label="Edit", 
                                        menu=self.__thisEditMenu)      
@@ -179,7 +187,25 @@ class Notepad:
             file = open(self.__file,"w") 
             file.write(self.__thisTextArea.get(1.0,END)) 
             file.close() 
-  
+
+    def __darkMode(self): 
+        try: 
+            self.__thisTextArea.config({"background": "Black"})
+            self.__thisTextArea.config({"foreground": "White"})
+            self.__thisTextArea.config(insertbackground="Gray")
+
+        except:
+            pass
+
+    def __lightMode(self): 
+        try: 
+            self.__thisTextArea.config({"background": "White"})
+            self.__thisTextArea.config({"foreground": "Black"})
+            self.__thisTextArea.config(insertbackground="Black")
+
+        except:
+            pass
+
     def __cut(self): 
         self.__thisTextArea.event_generate("<<Cut>>") 
   
